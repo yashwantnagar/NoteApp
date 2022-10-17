@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardElevation="1dp"
+    app:cardCornerRadius="8dp"
+    android:id="@+id/cardView"
+    android:padding="10dp"
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="#EFD002"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:gravity="start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+
+        <TextView
+            android:id="@+id/noteTitle"
+            android:text="Hello Yashwant Nagar"
+            android:textSize="25sp"
+            android:textStyle="italic|bold"
+            android:gravity="start"
+            android:padding="5dp"
+            android:fontFamily="sans-serif"
+            android:maxLines="1"
+            android:typeface="monospace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/noteDesc"
+            android:padding="5dp"
+            android:textStyle="italic"
+            android:typeface="monospace"
+            android:fontFamily="sans-serif-medium"
+            android:text="Hello Yashwant Nagar What you expect for me what can i do fpr you so you can sure it's work."
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/noteDate"
+            android:padding="5dp"
+            android:textStyle="italic"
+            android:gravity="end"
+            android:typeface="monospace"
+            android:fontFamily="sans-serif-medium"
+            android:text="14 oct 2022"
+            android:textSize="15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
