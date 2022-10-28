@@ -43,8 +43,10 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this,"Yashwant",Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this,WriteNoteActivity::class.java)
-//            startActivity(intent)
-            activityResultLauncher.launch(intent)
+            startActivity(intent)
+
+
+//            activityResultLauncher.launch(intent)
 
         })
 
@@ -61,7 +63,11 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.adapter = noteAdapter
 
-        activityResultLauncher = registerForActivityResult(ActivityResultContracts
+
+
+
+
+        /*activityResultLauncher = registerForActivityResult(ActivityResultContracts
             .StartActivityForResult()) { result ->
 
             // There are no request codes
@@ -80,7 +86,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("TAG", "resultCode2: $t2 ")
 
             }
-        }
+        }*/
 
 
 
