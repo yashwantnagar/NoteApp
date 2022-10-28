@@ -22,6 +22,7 @@
         android:padding="5dp">
 
 
+
         <TextView
             android:id="@+id/noteTitle"
             android:text="Hello Yashwant Nagar"

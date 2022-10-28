@@ -9,10 +9,20 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.org.note.R
+import com.org.note.database.Note
 import com.org.note.model.NoteShowModel
 
-class NoteAdapter(private val context : Context, private val mList : List<NoteShowModel>): RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
+class NoteAdapter(
 
+    private val context : Context,
+    private val noteClickDeleteInterface : NoteClickDeleteInterface,
+    private val noteClickInterface : NoteClickInterface
+
+    ) :
+
+    RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
+
+    private val allNotes = ArrayList<Note>()
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,7 +37,7 @@ class NoteAdapter(private val context : Context, private val mList : List<NoteSh
     // binds the list items to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val noteShowModel = mList[position]
+//        val noteShowModel = allNotes[position]
 
 
 //        holder.imageView.setImageResource(R.drawable.ic_launcher_foreground)
@@ -38,8 +48,13 @@ class NoteAdapter(private val context : Context, private val mList : List<NoteSh
 //        holder.noteDate.setText("14 oct 2022")
 
         holder.cardView.setOnClickListener {
-            Toast.makeText(context, noteShowModel.title,
+
+            Toast.makeText(context, "noteShowModel.title",
                 Toast.LENGTH_SHORT).show()
+
+
+            noteClickInterface.onNoteClick(allNotes.get(position))
+
         }
 
 
@@ -47,7 +62,7 @@ class NoteAdapter(private val context : Context, private val mList : List<NoteSh
 
     // return the number of the items in the list
     override fun getItemCount(): Int {
-        return mList.size
+        return allNotes.size
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -57,6 +72,23 @@ class NoteAdapter(private val context : Context, private val mList : List<NoteSh
         val noteDesc : TextView = itemView.findViewById(R.id.noteDesc)
         val noteDate : TextView = itemView.findViewById(R.id.noteDate)
 
+    }
+
+
+    fun updateList(newList : List<Note>){
+
+        allNotes.clear()
+        allNotes.addAll(newList)
+        notifyDataSetChanged()
+
+    }
+
+    interface NoteClickDeleteInterface {
+        fun onDeleteIconClick(note: Note)
+    }
+
+    interface NoteClickInterface {
+        fun onNoteClick(note: Note)
     }
 
 }

@@ -35,6 +35,7 @@ class WriteNoteActivity : AppCompatActivity() {
 
 //        val simpleDateFormat = SimpleDateFormat("dd MM yyyy G 'at' HH:mm:ss z")
         val simpleDateFormat = SimpleDateFormat("dd MM yyyy")
+
         val currentDateAndTime : String = simpleDateFormat.format(Date())
 
         dates  = simpleDateFormat.format(Date())
