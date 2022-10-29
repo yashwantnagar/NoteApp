@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.org.note.R
 import com.org.note.database.Note
-import com.org.note.model.NoteShowModel
 
 class NoteAdapter(
 
@@ -37,17 +35,6 @@ class NoteAdapter(
 
     // binds the list items to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-//        val noteShowModel = allNotes[position]
-
-
-//        holder.imageView.setImageResource(R.drawable.ic_launcher_foreground)
-//        holder.imageView.setImageResource(noteViewModel.image)
-
-//        holder.noteTitle.setText(noteShowModel.title)
-//        holder.noteDesc.setText(noteShowModel.Desc)
-//        holder.noteDate.setText("14 oct 2022")
-
 
 
         //on below line we are setting data to item of recycler view.
