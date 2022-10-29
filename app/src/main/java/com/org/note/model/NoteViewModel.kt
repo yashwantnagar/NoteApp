@@ -3,10 +3,10 @@ package com.org.note.model
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import com.org.note.database.Note
 import com.org.note.database.NoteDatabase
 import com.org.note.database.NoteRepository
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
