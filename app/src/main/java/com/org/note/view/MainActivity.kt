@@ -3,6 +3,7 @@ package com.org.note.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity(), NoteAdapter.NoteClickDeleteInterface,
     private lateinit var activityResultLauncher : ActivityResultLauncher<Intent>
     lateinit var viewModel: NoteViewModel
 
+    private val TAG : String = "MainActivity"
 
     companion object {
         const val resultCode1 = 1200
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity(), NoteAdapter.NoteClickDeleteInterface,
 
             val intent = Intent(this,WriteNoteActivity::class.java)
             startActivity(intent)
+            finish()
 
 
 //            activityResultLauncher.launch(intent)
@@ -65,7 +68,6 @@ class MainActivity : AppCompatActivity(), NoteAdapter.NoteClickDeleteInterface,
         val noteAdapter = NoteAdapter(this, this,this)
 
         recyclerView.adapter = noteAdapter
-
 
         viewModel = ViewModelProvider(this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
@@ -102,17 +104,36 @@ class MainActivity : AppCompatActivity(), NoteAdapter.NoteClickDeleteInterface,
             }
         }*/
 
-
-
-
+        
     }
 
     override fun onDeleteIconClick(note: Note) {
         TODO("Not yet implemented")
+
+        //in on note click method we are calling delete method from our viw modal to delete our not.
+        viewModel.deleteNote(note)
+        //displaying a toast message
+        Toast.makeText(this, "${note.title} Deleted", Toast.LENGTH_LONG).show()
+
+        Log.d(TAG, "onDeleteIconClick: ")
+
     }
 
     override fun onNoteClick(note: Note) {
         TODO("Not yet implemented")
+
+        Log.d(TAG, "onNoteClick: ")
+        
+        //opening a new intent and passing a data to it.
+        val intent = Intent(this, WriteNoteActivity::class.java)
+        intent.putExtra("noteType", "Edit")
+        intent.putExtra("noteTitle", note.title)
+        intent.putExtra("noteDescription", note.note)
+        intent.putExtra("noteId", note.id)
+        startActivity(intent)
+        finish()
+        
+        
     }
 
 

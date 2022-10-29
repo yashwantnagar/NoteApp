@@ -1,6 +1,7 @@
 package com.org.note.view
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,7 +48,31 @@ class NoteAdapter(
 //        holder.noteDesc.setText(noteShowModel.Desc)
 //        holder.noteDate.setText("14 oct 2022")
 
-        holder.cardView.setOnClickListener {
+
+
+        //on below line we are setting data to item of recycler view.
+        holder.noteTitle.setText(allNotes.get(position).title)
+        holder.noteDesc.setText(allNotes.get(position).note)
+        holder.noteDate.setText("Last Updated : "+allNotes.get(position).date)
+        //on below line we are adding click listner to our delete image view icon.
+
+       /* holder.deleteIV.setOnClickListener {
+            //on below line we are calling a note click interface and we are passing a position to it.
+            noteClickDeleteInterface.onDeleteIconClick(allNotes.get(position))
+        }*/
+
+        //on below line we are adding click listner to our recycler view item.
+        holder.itemView.setOnClickListener {
+            //on below line we are calling a note click interface and we are passing a position to it.
+            noteClickInterface.onNoteClick(allNotes.get(position))
+
+            Log.d("TAG", "onBindViewHolder: ")
+
+        }
+
+
+
+        /*holder.cardView.setOnClickListener {
 
             Toast.makeText(context, "noteShowModel.title",
                 Toast.LENGTH_SHORT).show()
@@ -55,7 +80,7 @@ class NoteAdapter(
 
             noteClickInterface.onNoteClick(allNotes.get(position))
 
-        }
+        }*/
 
 
     }
