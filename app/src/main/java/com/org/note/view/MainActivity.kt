@@ -3,22 +3,25 @@ package com.org.note.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.org.note.R
-import com.org.note.model.NoteShowModel
+import com.org.note.database.Note
+import com.org.note.model.NoteViewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NoteAdapter.NoteClickDeleteInterface,
+    NoteAdapter.NoteClickInterface {
 
 
     private lateinit var activityResultLauncher : ActivityResultLauncher<Intent>
+    lateinit var viewModel: NoteViewModel
 
 
     companion object {
@@ -53,16 +56,27 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val data = ArrayList<NoteShowModel>()
+//        val data = ArrayList<NoteShowModel>()
+//
+//        for (i in 1..20){
+//            data.add(NoteShowModel("Title $i", "Item $i",""))
+//        }
 
-        for (i in 1..20){
-            data.add(NoteShowModel("Title $i", "Item $i",""))
-        }
-
-        val noteAdapter = NoteAdapter(this, data)
+        val noteAdapter = NoteAdapter(this, this,this)
 
         recyclerView.adapter = noteAdapter
 
+
+        viewModel = ViewModelProvider(this,
+            ViewModelProvider.AndroidViewModelFactory.getInstance(application)
+        ).get(NoteViewModel::class.java)
+
+        viewModel.allNotes.observe(this, Observer { list ->
+            list?.let {
+                //on below line we are updating our list.
+                noteAdapter.updateList(it)
+            }
+        })
 
 
 
@@ -92,4 +106,14 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+    override fun onDeleteIconClick(note: Note) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onNoteClick(note: Note) {
+        TODO("Not yet implemented")
+    }
+
+
 }
