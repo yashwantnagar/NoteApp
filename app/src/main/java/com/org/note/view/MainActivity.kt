@@ -13,9 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.org.note.R
+import com.org.note.database.Note
 import com.org.note.model.NoteShowModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NoteAdapter.NoteClickDeleteInterface,
+    NoteAdapter.NoteClickInterface {
 
 
     private lateinit var activityResultLauncher : ActivityResultLauncher<Intent>
@@ -59,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             data.add(NoteShowModel("Title $i", "Item $i",""))
         }
 
-        val noteAdapter = NoteAdapter(this, data)
+        val noteAdapter = NoteAdapter(this, this,this)
 
         recyclerView.adapter = noteAdapter
 
@@ -92,4 +94,14 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+    override fun onDeleteIconClick(note: Note) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onNoteClick(note: Note) {
+        TODO("Not yet implemented")
+    }
+
+
 }
