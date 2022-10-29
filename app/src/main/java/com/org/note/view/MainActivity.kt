@@ -108,7 +108,7 @@ class MainActivity : AppCompatActivity(), NoteAdapter.NoteClickDeleteInterface,
     }
 
     override fun onDeleteIconClick(note: Note) {
-        TODO("Not yet implemented")
+//        TODO("Not yet implemented")
 
         //in on note click method we are calling delete method from our viw modal to delete our not.
         viewModel.deleteNote(note)
@@ -120,7 +120,7 @@ class MainActivity : AppCompatActivity(), NoteAdapter.NoteClickDeleteInterface,
     }
 
     override fun onNoteClick(note: Note) {
-        TODO("Not yet implemented")
+//        TODO("Not yet implemented")
 
         Log.d(TAG, "onNoteClick: ")
         

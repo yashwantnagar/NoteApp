@@ -24,7 +24,7 @@ class WriteNoteActivity : AppCompatActivity() {
     private lateinit var toolbar : Toolbar
     private lateinit var btnSave : AppCompatButton
 
-    private lateinit var dates : String
+//    private lateinit var dates : String
 
 
     //on below line we are creating variable for viewmodal and and integer for our note id.
@@ -45,14 +45,14 @@ class WriteNoteActivity : AppCompatActivity() {
         dateTV  = findViewById(R.id.dateTV)
 
 //        val simpleDateFormat = SimpleDateFormat("dd MM yyyy G 'at' HH:mm:ss z")
-        val simpleDateFormat = SimpleDateFormat("dd MM yyyy")
+//        val simpleDateFormat = SimpleDateFormat("dd MM yyyy")
+//
+//        val currentDateAndTime : String = simpleDateFormat.format(Date())
 
-        val currentDateAndTime : String = simpleDateFormat.format(Date())
+//        dates  = simpleDateFormat.format(Date())
 
-        dates  = simpleDateFormat.format(Date())
-
-        dateTV.text = currentDateAndTime
-        dateTV.text = dates
+//        dateTV.text = currentDateAndTime
+//        dateTV.text = dates
 
 
         //on below line we are initlaiing our view modal.
