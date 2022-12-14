@@ -1,5 +1,6 @@
 package com.org.note.view
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -24,15 +25,13 @@ class WriteNoteActivity : AppCompatActivity() {
     private lateinit var toolbar : Toolbar
     private lateinit var btnSave : AppCompatButton
 
-//    private lateinit var dates : String
-
-
     //on below line we are creating variable for viewmodal and and integer for our note id.
     lateinit var viewModal: NoteViewModel
     var noteID = -1;
 
 
 
+    @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_write_note)
@@ -44,24 +43,12 @@ class WriteNoteActivity : AppCompatActivity() {
         descET  = findViewById(R.id.descET)
         dateTV  = findViewById(R.id.dateTV)
 
-//        val simpleDateFormat = SimpleDateFormat("dd MM yyyy G 'at' HH:mm:ss z")
-//        val simpleDateFormat = SimpleDateFormat("dd MM yyyy")
-//
-//        val currentDateAndTime : String = simpleDateFormat.format(Date())
-
-//        dates  = simpleDateFormat.format(Date())
-
-//        dateTV.text = currentDateAndTime
-//        dateTV.text = dates
-
 
         //on below line we are initlaiing our view modal.
         viewModal = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
         ).get(NoteViewModel::class.java)
-
-
 
 
         //on below line we are getting data passsed via an intent.
@@ -77,22 +64,6 @@ class WriteNoteActivity : AppCompatActivity() {
         } else {
             btnSave.setText("Save Note")
         }
-
-
-
-//        string = titleET.text.toString()
-
-
-
-//        toolbar.setOnClickListener(View.OnClickListener {
-//
-//            val intent = Intent()
-//            intent.putExtra("text","I am back")
-//            intent.putExtra("title",string)
-//            setResult(MainActivity.resultCode1,intent)
-//            finish()
-//
-//        })
 
 
         btnSave.setOnClickListener(View.OnClickListener {
@@ -124,16 +95,6 @@ class WriteNoteActivity : AppCompatActivity() {
             //opening the new activity on below line
             startActivity(Intent(applicationContext, MainActivity::class.java))
             this.finish()
-
-
-//            string = titleET.text.toString()
-
-
-//            val intent = Intent()
-//            intent.putExtra("text","I am back")
-//            intent.putExtra("title",titleET.text.toString())
-//            setResult(MainActivity.resultCode1,intent)
-//            finish()
 
         })
 
